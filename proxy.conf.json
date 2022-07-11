@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "http://test.local/api",
+      "secure": flase,
+      "changeOrigin": true,      
+    }
+  }
