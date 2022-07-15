@@ -1,6 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Edit Items</title>
+</head>
+<body>
+  <div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Edit <b>Items</b></h2>
+            </div>
+          </div>
+        </div>
 <div class="container">
 
-  <h3>Update</h3>
 
   <a href="#"  [routerLink]="['/']" class="btn btn-primary">Back</a>
 
@@ -9,28 +27,28 @@
       <div class="form-group">
           <label for="name">Name:</label>
           <input formControlName="name" id="name" type="text" value="{{post?.name}}" class="form-control">
-          <div *ngIf="f.name.touched && f.name.valid" class="alert alert-danger">
-              <div *ngIf="!f.name.errors?.required">Name is required.</div>
-              <div *ngIf="f.name.errors?.minlength">
-                Name must be at least 3 characters long.
-              </div>
-              <div *ngIf="f.name.errors?.pattern">
-                  Please enter the characters.
-              </div>
+          <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+            <div *ngIf="f.name.errors?.required">Name is required.</div>
+            <div *ngIf="f.name.errors?.minlength">
+              Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="f.name.errors?.pattern">
+                Please enter the characters.
+            </div>
           </div>
       </div>
 
       <div class="form-group">
         <label for="state">State:</label>
         <input formControlName="state" id="state" type="text" value="{{post?.state}}" class="form-control">
-        <div *ngIf="f.state.touched && f.state.valid" class="alert alert-danger">
-            <div *ngIf="f.state.errors?.required">state is required.</div>
-            <div *ngIf="f.state.errors?.minlength">
-              State must be at least 2 characters long.
-            </div>
-            <div *ngIf="f.state.errors?.pattern">
-                Please enter the characters.
-            </div>
+        <div *ngIf="f.state.touched && f.state.invalid" class="alert alert-danger">
+          <div *ngIf="f.state.errors?.required">state is required.</div>
+          <div *ngIf="f.state.errors?.minlength">
+            State must be at least 2 characters long.
+          </div>
+          <div *ngIf="f.state.errors?.pattern">
+              Please enter the characters.
+          </div>
         </div>
       </div>
 
@@ -84,13 +102,21 @@
             <div *ngIf="f.item.errors?.minlength">
               Item must be at least 3 digit long.
             </div>
+            <div *ngIf="f.item.errors?.pattern">
+              Quantity must be only alphanumeric.
+          </div>
         </div>
       </div>
 
       <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
 
   </form>
-
 </div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
 
 

@@ -37,8 +37,8 @@ export class CovidService {
       return this.http.post(this.apiURL+'/csvpostapi.php', model);
   }
 
-  editCsvData(id: any, model: any): Observable<any>{
-    return this.http.put(this.apiURL +`/csveditapi.php?id=`+id, model );
+  editCsvData(model: any): Observable<any>{
+    return this.http.post(this.apiURL +'/csveditapi.php', model);
   }
 
   find(id: any): Observable<any> {

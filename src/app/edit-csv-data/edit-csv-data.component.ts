@@ -32,7 +32,7 @@ export class EditCsvDataComponent implements OnInit {
       zip: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern(/^[0-9]+$/)]),
       amount: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^[0-9]+$/)]),
       qty: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]+$/)]),
-      item: new FormControl('', [Validators.required, Validators.minLength(3)])
+      item: new FormControl('', [Validators.required, Validators.minLength(3),Validators.pattern("^[a-zA-Z0-9_]*$")])
     });
   }
 
@@ -49,17 +49,15 @@ export class EditCsvDataComponent implements OnInit {
   }
 
   submit(){
-
     console.log(this.form.value);
 
-    this.csvService.editCsvData(this.id, this.form.value).subscribe(res => {
+    this.csvService.editCsvData(this.form.value).subscribe(res => {
 
          console.log('Post updated successfully!');
 
-         //this.router.navigateByUrl('post/index');
+         this.router.navigateByUrl('/')
 
     })
-
   }
 
 }
