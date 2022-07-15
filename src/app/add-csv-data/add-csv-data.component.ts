@@ -22,12 +22,12 @@ export class AddCsvDataComponent implements OnInit {
 
     ngOnInit(): void {
       this.form = new FormGroup({
-        name: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required),
-        zip: new FormControl('', Validators.required),
-        amount: new FormControl('', Validators.required),
-        qty: new FormControl('', Validators.required),
-        item: new FormControl('', Validators.required)
+        name: new FormControl('', [ Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]*$/)]),
+        state: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]),
+        zip: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern(/^[0-9]+$/)]),
+        amount: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^[0-9]+$/)]),
+        qty: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]+$/)]),
+        item: new FormControl('', [Validators.required, Validators.minLength(3)])
       });
     }
 
@@ -35,11 +35,10 @@ export class AddCsvDataComponent implements OnInit {
       return this.form.controls;
     }
 
-    submit(){ alert('a');
-      console.log(this.form.value);
-      this.csvService.addCsvData(this.form.value).subscribe(res=>{
+    submit(){
+         this.csvService.addCsvData(this.form.value).subscribe(res=>{
         console.log('Post created successfully');
-        //this.router.navigateByUrl('post/index')
+        this.router.navigateByUrl('/')
       })
     }
 

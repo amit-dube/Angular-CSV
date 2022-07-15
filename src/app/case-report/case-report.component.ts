@@ -18,8 +18,8 @@ export class CaseReportComponent implements OnInit {
     this.getData();
   }
 
+  // Get the data from CSV
   getData() {
-
     this.csvService.getInfo().subscribe(data => {
       this.records = data;
        // console.log(this.records);
@@ -27,10 +27,9 @@ export class CaseReportComponent implements OnInit {
 
   }
 
-
+  // Remove the Particular Data from CSV
   remove(id: number) {
-    alert(id);
-    this.csvService.deleteData(id).subscribe(response => {
+      this.csvService.deleteData(id).subscribe(response => {
       this.getData();
     })
   }

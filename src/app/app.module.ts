@@ -9,13 +9,15 @@ import { AddCsvDataComponent } from './add-csv-data/add-csv-data.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovidService } from './covid.service';
+import { EditCsvDataComponent } from './edit-csv-data/edit-csv-data.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CaseReportComponent,
-    AddCsvDataComponent
+    AddCsvDataComponent,
+    EditCsvDataComponent
   ],
   imports: [
     BrowserModule,

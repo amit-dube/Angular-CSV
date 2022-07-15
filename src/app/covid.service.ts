@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CovidService {
 
-  private apiURL = `http:localhost/api`;
+  private apiURL = `http://localhost/api`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,6 +35,14 @@ export class CovidService {
 
   addCsvData(model: any): Observable<any> {
       return this.http.post(this.apiURL+'/csvpostapi.php', model);
+  }
+
+  editCsvData(id: any, model: any): Observable<any>{
+    return this.http.put(this.apiURL +`/csveditapi.php?id=`+id, model );
+  }
+
+  find(id: any): Observable<any> {
+    return this.http.get(this.apiURL +'/csvapi.php?fl' +'=get&id='+id);
   }
 
 }

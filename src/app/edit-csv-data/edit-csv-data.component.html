@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Add Items</title>
-</head>
-<body>
-  <div class="container-xl">
-    <div class="table-responsive">
-      <div class="table-wrapper">
-        <div class="table-title">
-          <div class="row">
-            <div class="col-sm-6">
-              <h2>Add <b>Items</b></h2>
-            </div>
-          </div>
-        </div>
 <div class="container">
-  <a href="#"  [routerLink]="['/']" class="btn btn-primary">Back</a>
-  <form [formGroup]="form"  (ngSubmit)="submit()">
 
+  <h3>Update</h3>
+
+  <a href="#"  [routerLink]="['/']" class="btn btn-primary">Back</a>
+
+   <form [formGroup]="form"  (ngSubmit)="submit()">
+    <input formControlName="eid" id="eid" type="hidden" value="{{post?.id}}" class="form-control">
       <div class="form-group">
           <label for="name">Name:</label>
-          <input formControlName="name" id="name" type="text" class="form-control">
-          <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-              <div *ngIf="f.name.errors?.required">Name is required.</div>
+          <input formControlName="name" id="name" type="text" value="{{post?.name}}" class="form-control">
+          <div *ngIf="f.name.touched && f.name.valid" class="alert alert-danger">
+              <div *ngIf="!f.name.errors?.required">Name is required.</div>
               <div *ngIf="f.name.errors?.minlength">
                 Name must be at least 3 characters long.
               </div>
@@ -37,8 +22,8 @@
 
       <div class="form-group">
         <label for="state">State:</label>
-        <input formControlName="state" id="state" type="text" class="form-control">
-        <div *ngIf="f.state.touched && f.state.invalid" class="alert alert-danger">
+        <input formControlName="state" id="state" type="text" value="{{post?.state}}" class="form-control">
+        <div *ngIf="f.state.touched && f.state.valid" class="alert alert-danger">
             <div *ngIf="f.state.errors?.required">state is required.</div>
             <div *ngIf="f.state.errors?.minlength">
               State must be at least 2 characters long.
@@ -51,7 +36,7 @@
 
       <div class="form-group">
         <label for="zip">Zip:</label>
-        <input formControlName="zip" id="zip" type="text" class="form-control">
+        <input formControlName="zip" id="zip" type="text" value="{{post?.zip}}" class="form-control">
         <div *ngIf="f.zip.touched && f.zip.invalid" class="alert alert-danger">
             <div *ngIf="f.zip.errors?.required">zip is required.</div>
             <div *ngIf="f.zip.errors?.minlength">
@@ -65,7 +50,7 @@
 
       <div class="form-group">
         <label for="amount">Amount:</label>
-        <input formControlName="amount" id="amount" type="text" class="form-control">
+        <input formControlName="amount" id="amount" type="text" value="{{post?.amount}}" class="form-control">
         <div *ngIf="f.amount.touched && f.amount.invalid" class="alert alert-danger">
             <div *ngIf="f.amount.errors?.required">Amount is required.</div>
             <div *ngIf="f.amount.errors?.minlength">
@@ -79,8 +64,8 @@
 
       <div class="form-group">
         <label for="qty">Qty:</label>
-        <input formControlName="qty" id="qty" type="text" class="form-control">
-        <div *ngIf="f.qty.touched && f.qty.invalid" class="alert alert-danger">
+        <input formControlName="qty" id="qty" type="text" value="{{post?.qty}}" class="form-control">
+        <div *ngIf="(f.qty.touched || f.qty.dirty) && f.qty.invalid" class="alert alert-danger">
             <div *ngIf="f.qty.errors?.required">Qty is required.</div>
             <div *ngIf="f.qty.errors?.minlength">
               Quantity must be at least 1 digit long.
@@ -93,7 +78,7 @@
 
       <div class="form-group">
         <label for="item">Item:</label>
-        <input formControlName="item" id="item" type="text" class="form-control">
+        <input formControlName="item" id="item" type="text" value="{{post?.item}}" class="form-control">
         <div *ngIf="f.item.touched && f.item.invalid" class="alert alert-danger">
             <div *ngIf="f.item.errors?.required">Item is required.</div>
             <div *ngIf="f.item.errors?.minlength">
@@ -107,8 +92,5 @@
   </form>
 
 </div>
-</div>
-</div>
-</div>
-</body>
-</html>
+
+
