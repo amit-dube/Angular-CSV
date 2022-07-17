@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class CovidService {
 
+  /**
+    *Http base url
+  */
   private apiURL = `http://localhost/api`;
 
   httpOptions = {
@@ -17,32 +20,40 @@ export class CovidService {
 
   constructor(private http: HttpClient) { }
 
-  //csvData = './assets/data.csv';
-
-  /*getInfo() {
-     return this.http.get(this.csvData, {responseType: 'text'});
-    }*/
-
-
+  /*
+    * To get all the records
+  */
     getInfo() {
-    return this.http.get(this.apiURL +'/csvapi.php?fl' +'=get');
+    return this.http.get(this.apiURL +'/csvapi.php');
     }
 
-
-  deleteData(id: number): Observable<any> {
-      return this.http.delete(this.apiURL +'/csvapi.php?fl' +'=delete&id=' + id);
-    }
-
+  /**
+   * To save the details
+  */
   addCsvData(model: any): Observable<any> {
       return this.http.post(this.apiURL+'/csvpostapi.php', model);
   }
 
+  /**
+   * To Edit the details
+   */
   editCsvData(model: any): Observable<any>{
     return this.http.post(this.apiURL +'/csveditapi.php', model);
   }
 
+  /**
+   * Return the csv row record as per id
+   */
   find(id: any): Observable<any> {
-    return this.http.get(this.apiURL +'/csvapi.php?fl' +'=get&id='+id);
+    return this.http.get(this.apiURL +'/csvapi.php?id='+id);
+  }
+
+  /**
+	 * To delete the record
+	 * id
+	*/
+  deleteData(id: number): Observable<any> {
+    return this.http.delete(this.apiURL +'/csv-delete-api.php?id=' + id);
   }
 
 }

@@ -25,7 +25,7 @@ export class AddCsvDataComponent implements OnInit {
         name: new FormControl('', [ Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]*$/)]),
         state: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-Z\s]*$/)]),
         zip: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern(/^[0-9]+$/)]),
-        amount: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^[0-9]+$/)]),
+        amount: new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern(/^\d+\.?\d*$/)]),
         qty: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]+$/)]),
         item: new FormControl('', [Validators.required, Validators.minLength(3)])
       });

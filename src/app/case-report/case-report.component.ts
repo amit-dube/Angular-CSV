@@ -27,7 +27,7 @@ export class CaseReportComponent implements OnInit {
 
   }
 
-  // Remove the Particular Data from CSV
+  // Remove the Particular by ID from CSV
   remove(id: number) {
       this.csvService.deleteData(id).subscribe(response => {
       this.getData();
